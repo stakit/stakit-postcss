@@ -23,6 +23,6 @@
   },
   "dependencies": {
     "postcss": "^7.0.17",
-    "stakit": "^0.0.2"
+    "stakit": "^0.0.3"
   }
 }

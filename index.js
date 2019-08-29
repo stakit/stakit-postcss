@@ -3,6 +3,7 @@ var postcss = require('postcss')
 var fs = require('fs')
 var path = require('path')
 var { Readable } = require('stream')
+var stakitUtils = require('stakit/lib/utils')
 var { includeStyle } = require('stakit/transforms')
 
 module.exports = function (entry, opts, postcssOpts) {
@@ -36,10 +37,7 @@ module.exports = function (entry, opts, postcssOpts) {
   // return stakit plugin
   return function (ctx) {
     // add file to the files list
-    ctx._files.push({
-      destination: opts.output,
-      stream: stream
-    })
+    ctx._files.push(stakitUtils.newFileStream(entry, opts.output, stream))
 
     // automatically include it if needed
     if (opts.includeStyle) {
